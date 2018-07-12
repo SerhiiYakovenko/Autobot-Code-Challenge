@@ -38,45 +38,52 @@ class LinkedList
             end
   end
 
-  def delete_middle_node
-    return nil if @head.nil? || @head.next.nil?
+  def inspect
+    return nil if @head.nil?
     arr = ["#{@head.data} (head)"]
-    slow_pointer = @head
-    fast_pointer = @head
     current_node = @head.next
-    until fast_pointer.nil? || fast_pointer.next.nil?
-      2.times do
-        break if current_node.nil?
-        arr << current_node.data.to_s
-        current_node = current_node.next
-      end
-      slow_pointer = slow_pointer.next
-      fast_pointer = fast_pointer.next.next
+    until current_node.nil? do
+      arr << "#{current_node.data}"
+      current_node = current_node.next
     end
-    arr << 'nil'
-    arr.delete(slow_pointer.data.to_s)
+    arr << "nil"
     p arr.join(' -> ')
-    arr
   end
 
-  def delete_middle_node_second
+  def append node_or_data
+    new_node = node_or_data.instance_of?(Node) ? node_or_data : Node.new(node_or_data)
+    current_node = @head
+    if current_node.nil?
+      @head = new_node
+      return
+    end
+    current_node = current_node.next until current_node.next.nil?
+    current_node.next = new_node
+  end
+
+  def delete_middle_node
     return nil if @head.nil? || @head.next.nil?
-    arr = ["#{@head.data} (head)"]
+    previous = @head
+    slow_pointer = @head
+    fast_pointer = @head
+    until fast_pointer.nil? || fast_pointer.next.nil?
+      fast_pointer = fast_pointer.next.next
+      previous = slow_pointer
+      slow_pointer = slow_pointer.next
+    end
+    previous.next = slow_pointer.next
+  end
+
+  # Another variant for finding middle node
+  def find_middle_node
+    return nil if @head.nil? || @head.next.nil?
     counter = 0
     middle = @head
-    current_node = @head.next
     until @head.nil?
-      unless current_node.nil?
-        arr << current_node.data.to_s
-        current_node = current_node.next
-      end
       middle = middle.next if counter.odd?
       counter += 1
       @head = @head.next
     end
-    arr << 'nil'
-    arr.delete(middle.data.to_s)
-    p arr.join(' -> ')
-    arr
+    middle.data
   end
 end
