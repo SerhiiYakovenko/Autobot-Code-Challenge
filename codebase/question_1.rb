@@ -2,16 +2,16 @@ class Node
   attr_reader :data, :next
 
   def initialize(data)
-    @data = data.nil? ? raise('Data cannot be nil') : data
+    @data = data.nil? ? raise(ArgumentError, 'Data cannot be nil') : data
     @next = nil
   end
 
   def data=(new_data)
-    @data = new_data.nil? ? raise('Data cannot be nil') : new_data
+    @data = new_data.nil? ? raise(ArgumentError, 'Data cannot be nil') : new_data
   end
 
   def next=(new_next)
-    @next = new_next.is_a?(Node) || new_next.nil? ? new_next : raise('next must be a Node or nil')
+    @next = new_next.is_a?(Node) || new_next.nil? ? new_next : raise(ArgumentError, 'next must be a Node or nil')
   end
 end
 
@@ -45,17 +45,18 @@ class LinkedList
     fast_pointer = @head
     current_node = @head.next
     until fast_pointer.nil? || fast_pointer.next.nil?
-      2.times {
+      2.times do
         break if current_node.nil?
         arr << current_node.data.to_s
         current_node = current_node.next
-      }
+      end
       slow_pointer = slow_pointer.next
       fast_pointer = fast_pointer.next.next
     end
     arr << 'nil'
     arr.delete(slow_pointer.data.to_s)
     p arr.join(' -> ')
+    arr
   end
 
   def delete_middle_node_second
@@ -65,11 +66,10 @@ class LinkedList
     middle = @head
     current_node = @head.next
     until @head.nil?
-      2.times {
-        break if current_node.nil?
+      unless current_node.nil?
         arr << current_node.data.to_s
         current_node = current_node.next
-      }
+      end
       middle = middle.next if counter.odd?
       counter += 1
       @head = @head.next
@@ -77,5 +77,6 @@ class LinkedList
     arr << 'nil'
     arr.delete(middle.data.to_s)
     p arr.join(' -> ')
+    arr
   end
 end

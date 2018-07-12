@@ -8,7 +8,6 @@
 #
 # Remove the middle element of the list without iterating the list more than once.
 #     Assume the list size is not known until traversed.
-
 require_relative '../codebase/question_1'
 
 node_1 = Node.new 1

@@ -14,8 +14,12 @@
 
 require_relative '../codebase/question_2'
 
-list = ArrayList.new([[1, 2, 5, 4], [5, 6, 7, 8], [1, 5, 9, 10]])
-list.find_array_by_target(1)
+random_array = Array.new(rand(3..5)) { Array.new(4) { rand(1...9) } }
+random_target = rand(1..9)
+p "Array is #{random_array} and target is #{random_target}"
 
-list = ArrayList.new([[3, 8, 5, 2], [12, 3, 5, 11], [10, 8, 1, 6]], 3)
+list = ArrayList.new(random_array)
+list.find_array_by_target(random_target)
+
+list = ArrayList.new(random_array, random_target)
 list.find_array_by_target
