@@ -15,4 +15,5 @@ To run the test:
     
    You can run both tasks together:  
     $rake run_both_tasks
-5. Have fun!   
+5. Task #3 is in /solution/question_3.txt also there is some useful data in  /codebase/question_3
+6. Have fun!   
