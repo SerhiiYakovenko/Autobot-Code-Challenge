@@ -47,7 +47,7 @@ class LinkedList
       current_node = current_node.next
     end
     arr << "nil"
-    p arr.join(' -> ')
+    arr.join(' -> ')
   end
 
   def append node_or_data
