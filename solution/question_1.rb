@@ -1,13 +1,12 @@
 # Question 1
 # ----------
-#
 # Write a method that answers the following problem:
 #
 # Accept as input:
 # * list: a singly-linked list
 #
 # Remove the middle element of the list without iterating the list more than once.
-#     Assume the list size is not known until traversed.
+# Assume the list size is not known until traversed.
 require_relative '../codebase/question_1'
 
 node_1 = Node.new 1

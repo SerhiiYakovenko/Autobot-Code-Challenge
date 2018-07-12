@@ -1,16 +1,13 @@
 # Question 2
 # ----------
-#
 # Write a method that answers the following problem:
 #
-#                                               Accept as input:
-#
+# Accept as input:
 # * list: an unordered list of arrays each with 4 elements.
-#     * target: an integer
+# * target: an integer
 #
 # Find and display the complete array that contains the provided target number.
-#
-#     Support your answers with a suite of unit tests.
+# Support your answers with a suite of unit tests.
 
 require_relative '../codebase/question_2'
 

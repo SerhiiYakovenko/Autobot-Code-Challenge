@@ -1,7 +1,7 @@
 class ArrayList
   def initialize(list, target = nil)
-    @list = list.is_a?(Array) && !list.empty? ? list : raise(ArgumentError, 'Only array with data accepted.')
-    @target = target
+    @list = list.is_a?(Array) && !list.empty? ? list : raise(ArgumentError, 'Only array with data is accepted.')
+    @target = target.is_a?(Integer) || target.nil? ? target : raise(ArgumentError, 'Only integer as target is accepted.')
   end
 
   def find_array_by_target(target = @target)

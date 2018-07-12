@@ -1,0 +1,34 @@
+# Question 3
+# ----------
+# Assume a database with the following structure:
+
+# Members
+# ID NAME ADDRESS PHONE NUMBER AGE
+
+# Organization
+# ID MEMBER_ID LOCATION DUES
+
+# 1. Write a query that lists each member name, address, dues and location.
+# 2. Write a SQL Query to pull all members that are over 45
+# 3. Write a SQL Query to pull all customers that have a dues value of 0.
+
+You can find SQLite example with both tables and queries in
+
+//codebase/question_3
+
+1.
+SELECT Members.name, Members.address, Organization.dues, Organization.location
+FROM Members
+INNER JOIN Organization ON Members.id = Organization.member_id
+
+2.
+SELECT Members.name
+FROM Members
+INNER JOIN Organization ON Members.id = Organization.member_id
+WHERE Members.age > 45
+
+3.
+SELECT Members.name
+FROM Members
+INNER JOIN Organization ON Members.id = Organization.member_id
+WHERE Organization.dues == 0
